@@ -1,0 +1,6 @@
+@IT04.API_HostAddress = http://localhost:5195
+
+GET {{IT04.API_HostAddress}}/api/users/
+Accept: application/json
+
+###
