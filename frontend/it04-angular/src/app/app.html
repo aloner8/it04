@@ -1,0 +1,68 @@
+<mat-card class="main-card">
+
+  <mat-card-title>IT 04-1</mat-card-title>
+
+  <form [formGroup]="form">
+
+    <div class="grid">
+
+      <mat-form-field appearance="outline">
+        <mat-label>First Name</mat-label>
+        <input matInput formControlName="firstName">
+        <mat-error *ngIf="form.controls.firstName.invalid">
+          Required
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Last Name</mat-label>
+        <input matInput formControlName="lastName">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Email</mat-label>
+        <input matInput formControlName="email">
+        <mat-error *ngIf="form.controls.email.invalid">
+          Invalid Email
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Phone</mat-label>
+        <input matInput formControlName="phone">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Birth Day</mat-label>
+        <input matInput type="date" formControlName="birthDate">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Occupation</mat-label>
+        <mat-select formControlName="occupationId">
+          <mat-option *ngFor="let o of occupations" [value]="o.id">
+            {{ o.name }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <div>
+        <label>Profile</label>
+        <input type="file" (change)="onFileChange($event)">
+      </div>
+
+      <mat-radio-group formControlName="sex">
+        <mat-radio-button value="Male">Male</mat-radio-button>
+        <mat-radio-button value="Female">Female</mat-radio-button>
+      </mat-radio-group>
+
+    </div>
+
+    <div class="buttons">
+      <button mat-raised-button color="primary" (click)="save()">Save</button>
+      <button mat-raised-button color="warn" (click)="clear()">Clear</button>
+    </div>
+
+  </form>
+
+</mat-card>
